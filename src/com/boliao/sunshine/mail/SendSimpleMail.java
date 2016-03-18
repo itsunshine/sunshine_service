@@ -20,9 +20,9 @@ public class SendSimpleMail {
 
 	private static SendSimpleMail instance = new SendSimpleMail();
 
-	private final static String FROM = "1420514271@qq.com";
-	private final static String MAIL_ACCOUNT = "1420514271";
-	private final static String MAIL_PASSWORD = "Lb+syj1986";
+	private final static String FROM = "2177003519@qq.com";
+	private final static String MAIL_ACCOUNT = "2177003519";
+	private final static String MAIL_PASSWORD = "200366.net";
 
 	private SendSimpleMail() {
 	}
@@ -46,6 +46,7 @@ public class SendSimpleMail {
 			p.put("mail.smtp.auth", "true");
 			p.put("mail.transport.protocol", "smtp");
 			p.put("mail.smtp.host", "smtp.qq.com");
+			// p.put("mail.smtp.port", "25");
 			p.put("mail.smtp.port", "25");
 			// 建立会话
 			Session session = Session.getInstance(p);
