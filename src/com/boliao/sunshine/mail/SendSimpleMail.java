@@ -12,6 +12,8 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import com.sun.mail.util.MailSSLSocketFactory;
+
 /**
  * @author liaobo
  * 
@@ -22,7 +24,7 @@ public class SendSimpleMail {
 
 	private final static String FROM = "2177003519@qq.com";
 	private final static String MAIL_ACCOUNT = "2177003519";
-	private final static String MAIL_PASSWORD = "200366.net";
+	private static final String MAIL_PASSWORD = "sgisovtwzlmpebcc";
 
 	private SendSimpleMail() {
 	}
@@ -46,8 +48,10 @@ public class SendSimpleMail {
 			p.put("mail.smtp.auth", "true");
 			p.put("mail.transport.protocol", "smtp");
 			p.put("mail.smtp.host", "smtp.qq.com");
-			// p.put("mail.smtp.port", "25");
-			p.put("mail.smtp.port", "25");
+			MailSSLSocketFactory localMailSSLSocketFactory = new MailSSLSocketFactory();
+			localMailSSLSocketFactory.setTrustAllHosts(true);
+			p.put("mail.smtp.ssl.enable", "true");
+			p.put("mail.smtp.ssl.socketFactory", localMailSSLSocketFactory);
 			// 建立会话
 			Session session = Session.getInstance(p);
 			Message msg = new MimeMessage(session); // 建立信息
